@@ -35,7 +35,7 @@
 // NET "INPORT_4"  LOC = "P56";
 // NET "INPORT_5"  LOC = "P58";
 // NET "INPORT_6"  LOC = "P59";
- NET "INPORT_7"  LOC = "P60";
+// NET "INPORT_7"  LOC = "P60";
 
 ##### Parallel Output Port
 # Note: Definitions to be considered only for implementations that MAKE USE
@@ -47,7 +47,7 @@
 // NET "OUTPORT_4"   LOC = "P94";
 // NET "OUTPORT_5"   LOC = "P95";
 // NET "OUTPORT_6"   LOC = "P96";
-// NET "OUTPORT_7"   LOC = "P97";
+ NET "OUTPORT_7"   LOC = "P97";
 
 ##### User defined LEDs (D1-D16)
 # Note: Definitions to be considered only for implementations that do NOT
@@ -58,8 +58,8 @@
  NET "LED_D3"     LOC = "P54";
  NET "LED_D4"     LOC = "P55";
  NET "LED_D5"     LOC = "P56";
-// NET "LED_D6"     LOC = "P58";
-// NET "LED_D7"     LOC = "P59";
+ //NET "LED_D6"     LOC = "P58";
+ //NET "LED_D7"     LOC = "P59";
 // NET "LED_D8"     LOC = "P60";
 # Note: Definitions to be considered only for implementations that do NOT
 # MAKE USE of the parallel input port, but instead make use of the user
@@ -80,7 +80,7 @@
 #  The "J1_4" pin makes available the onboard oscillator CLK signal
 // NET "J1_5"       LOC = "P6";
 // NET "J1_6"       LOC = "P13";
-// NET "J1_7"       LOC = "P7";
+ //NET "J1_7"       LOC = "P7";
 // NET "J1_8"       LOC = "P14";
 // NET "J1_9"       LOC = "P8";
 // NET "J1_10"      LOC = "P15";
