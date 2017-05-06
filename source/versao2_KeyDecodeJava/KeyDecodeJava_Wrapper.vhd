@@ -35,10 +35,11 @@ entity KeyDecode_Wrapper is
 			  LED_D3 : out STD_LOGIC;
 	        LED_D4 : out STD_LOGIC;
 	        LED_D5 : out STD_LOGIC;
-	
-			  CLK      : in STD_LOGIC;
-			  INPORT_7 : in STD_LOGIC;
+			 
 			  
+			  CLK      : in STD_LOGIC;
+			  OUTPORT_7 : in STD_LOGIC;
+			  --J1_7 : in STD_LOGIC;
 			  J2_9 : out STD_LOGIC;
 			  J2_10: out STD_LOGIC;
 			  J2_11: out STD_LOGIC;
@@ -56,7 +57,7 @@ component KeyDecode is
 			 Kline : in  STD_LOGIC_VECTOR (3 downto 0);
 			 Kval  : out STD_LOGIC;
 			 Kcol	 : out STD_LOGIC_VECTOR (2 downto 0);
-			 K 	 : out STD_LOGIC_VECTOR (3 downto 0) --;
+			 K 	 : out STD_LOGIC_VECTOR (3 downto 0) 
           --STATE : out STD_LOGIC_VECTOR (2 downto 0)
 		  );
 end component;
@@ -64,7 +65,7 @@ begin
 
 		KD1 : KeyDecode
 			Port map(Clk 		=> CLK,
-						Kack		=>	INPORT_7,
+						Kack		=>	OUTPORT_7,
 						
 						Kline(0) => J2_15, 
 						Kline(1) => J2_14 ,
@@ -75,10 +76,15 @@ begin
 						Kcol(2) 	=> J2_9,
 						
 						Kval		=>	LED_D5,
-						K(3) 		=> LED_D4,
+					
+    					K(3) 		=> LED_D4,
 						K(2) 		=> LED_D3,
 						K(1) 		=> LED_D2,
 						K(0) 		=> LED_D1
+						
+					--	STATE(0) => LED_D1,
+					--	STATE(1) => LED_D2,
+					--	STATE(2) => LED_D3
 );
 
 end Structural ;
