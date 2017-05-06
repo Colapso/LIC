@@ -37,11 +37,6 @@ entity SerialReceiver is
 			 accept : in  STD_LOGIC;
           D      : out STD_LOGIC_VECTOR (8 downto 0);
           DXval  : out STD_LOGIC
---			 Counter: out STD_LOGIC_VECTOR (3 downto 0);
---			 Sinit  : out STD_LOGIC;
---			 RXerror: out  STD_LOGIC;   --teste
---			 dFlag  : out  STD_LOGIC;   --teste
---			 pFlag  : out  STD_LOGIC   --teste
 		  );
 end SerialReceiver;
 
