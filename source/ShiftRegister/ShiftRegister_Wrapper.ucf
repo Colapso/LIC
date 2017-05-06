@@ -21,7 +21,7 @@
 // NET "RST"        LOC = "P99";   # Connected to the global GSR pin
 
 ##### Onboard oscillator
- NET "CLK"        LOC = "P22";   # Oscillator output / Global GCK1 pin
+// NET "CLK"        LOC = "P22";   # Oscillator output / Global GCK1 pin
 // NET "CLK_F0"     LOC = "P63";   # Control signal for the clock divider
 // NET "CLK_F1"     LOC = "P64";   # Control signal for the clock divider
 
@@ -35,7 +35,7 @@
 // NET "INPORT_4"  LOC = "P56";
 // NET "INPORT_5"  LOC = "P58";
 // NET "INPORT_6"  LOC = "P59";
- NET "INPORT_7"  LOC = "P60";
+// NET "INPORT_7"  LOC = "P60";
 
 ##### Parallel Output Port
 # Note: Definitions to be considered only for implementations that MAKE USE
@@ -58,9 +58,9 @@
  NET "LED_D3"     LOC = "P54";
  NET "LED_D4"     LOC = "P55";
  NET "LED_D5"     LOC = "P56";
-// NET "LED_D6"     LOC = "P58";
-// NET "LED_D7"     LOC = "P59";
- //NET "LED_D8"     LOC = "P60";
+ NET "LED_D6"     LOC = "P58";
+ NET "LED_D7"     LOC = "P59";
+ NET "LED_D8"     LOC = "P60";
 # Note: Definitions to be considered only for implementations that do NOT
 # MAKE USE of the parallel input port, but instead make use of the user
 # user defined LEDs D9-16.
@@ -78,11 +78,11 @@
 // NET "J1_2"       LOC = "P3";    # Connected to the global GTS1 pin
 // NET "J1_3"       LOC = "P23";   # Connected to the global GCK2 pin
 #  The "J1_4" pin makes available the onboard oscillator CLK signal
-// NET "J1_5"       LOC = "P6";
+ NET "J1_5"       LOC = "P6";
 // NET "J1_6"       LOC = "P13";
-// NET "J1_7"       LOC = "P7";
+ NET "J1_7"       LOC = "P7";
 // NET "J1_8"       LOC = "P14";
-// NET "J1_9"       LOC = "P8";
+ NET "J1_9"       LOC = "P8";
 // NET "J1_10"      LOC = "P15";
 // NET "J1_11"      LOC = "P9";
 // NET "J1_12"      LOC = "P16";
@@ -102,13 +102,13 @@
 // NET "J2_6"       LOC = "P33";
 // NET "J2_7"       LOC = "P20";
 // NET "J2_8"       LOC = "P34";
- NET "J2_9"       LOC = "P24";
- NET "J2_10"      LOC = "P35";
- NET "J2_11"      LOC = "P25";
- NET "J2_12"      LOC = "P36";
- NET "J2_13"      LOC = "P28";
- NET "J2_14"      LOC = "P37";
- NET "J2_15"      LOC = "P29";
+// NET "J2_9"       LOC = "P24";
+// NET "J2_10"      LOC = "P35";
+// NET "J2_11"      LOC = "P25";
+// NET "J2_12"      LOC = "P36";
+// NET "J2_13"      LOC = "P28";
+// NET "J2_14"      LOC = "P37";
+// NET "J2_15"      LOC = "P29";
 // NET "J2_16"      LOC = "P39";
 // NET "J2_17"      LOC = "P32";
 // NET "J2_18"      LOC = "P40";
@@ -134,7 +134,7 @@
 // NET "J3_18"      LOC = "P71";
 
 ##### Connector J4 (Header D)
-// NET "J4_1"       LOC = "P27";   # Connected to the global GCK3 pin
+ NET "J4_1"       LOC = "P27";   # Connected to the global GCK3 pin
 // NET "J4_2"       LOC = "P3";    # Connected to the global GTS1 pin
 // NET "J4_3"       LOC = "P23";   # Connected to the global GCK2 pin
 #  The "J4_4" pin makes available the onboard oscillator CLK signal

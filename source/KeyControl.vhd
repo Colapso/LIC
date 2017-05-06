@@ -41,7 +41,7 @@ end KeyControl;
 
 architecture Behavioral of KeyControl is
 
-	type STATE_TYPE is ( STATE_SCAN, STATE_AVAL, STATE_KVAL);
+	type STATE_TYPE is ( STATE_INIT, STATE_AVAL, STATE_KVAL);
 
 	Signal Current, NS: STATE_TYPE;
 begin
@@ -60,28 +60,31 @@ begin
 	begin
 		case (Current) is
 		--
-		when STATE_SCAN		=> NS <=STATE_AVAL;
+		when STATE_INIT		=> if(Kpress(0)='0' and Kpress(1)='0' and Kack='0')
+										then NS <= STATE_AVAL;
+										else NS <= STATE_INIT;
+										end if;
+		--when STATE_SCAN		=> NS <=STATE_AVAL;
 										
 		when STATE_AVAL		=> if (Kpress(0) = '1' and Kpress(1) = '1') 
 										then NS <= STATE_KVAL;
 										else NS <= STATE_AVAL;
 										end if;
-
 		when STATE_KVAL		=> if (Kack ='1') 
-										then NS <= STATE_SCAN;
+										then NS <= STATE_INIT;
 										else NS <= STATE_KVAL;
 										end if;
-		when others				=> NS <= STATE_SCAN;
+		when others				=> NS <= STATE_INIT;
 		end case;
 		end process;
 		-- sinais de saida--
-		Kscan(0)	<='1' when (current = STATE_SCAN or (current = STATE_AVAL and Kpress(0)='0'))
+		Kscan(0)	<='1' when (current = STATE_AVAL and Kpress(0)='0')
 							else '0';
-		Kscan(1)	<='1' when (current = STATE_SCAN or (current = STATE_AVAL and Kpress(1)='0'))
+		Kscan(1)	<='1' when (current = STATE_AVAL and Kpress(1)='0')
 							else '0';
 		Kval 		<='1' when (Current = STATE_KVAL)
 							else '0';
-		STATE(0) <='1' when (Current = STATE_SCAN) 
+		STATE(0) <='1' when (Current = STATE_INIT) 
 							else '0';
 		STATE(1) <='1' when (Current = STATE_AVAL) 
 							else '0';
