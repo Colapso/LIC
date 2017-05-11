@@ -29,6 +29,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+
 entity SerialControl is
     Port ( CLK : in STD_LOGIC;
 			  notenRx 	: in  STD_LOGIC;

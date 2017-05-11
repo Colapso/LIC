@@ -29,6 +29,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+
 entity Comparer4bits is
    Port ( Ref    : in  STD_LOGIC_VECTOR (3 downto 0);
 	       Comp   : in  STD_LOGIC_VECTOR (3 downto 0);
