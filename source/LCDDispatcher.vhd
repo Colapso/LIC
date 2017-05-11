@@ -51,7 +51,7 @@ begin
 		end if;
 	end process;
 	
-	Next_State_Eval : process (Dval)
+	Next_State_Eval : process (Current,Dval)
 	begin
 		case (Current) is
 		--

@@ -53,14 +53,14 @@
 # Note: Definitions to be considered only for implementations that do NOT
 # MAKE USE of the parallel output port, but instead make use of the user
 # user defined LEDs D1-8.
- NET "LED_D1"     LOC = "P52";
- NET "LED_D2"     LOC = "P53";
- NET "LED_D3"     LOC = "P54";
- NET "LED_D4"     LOC = "P55";
- NET "LED_D5"     LOC = "P56";
- NET "LED_D6"     LOC = "P58";
- NET "LED_D7"     LOC = "P59";
- NET "LED_D8"     LOC = "P60";
+// NET "LED_D1"     LOC = "P52";
+// NET "LED_D2"     LOC = "P53";
+// NET "LED_D3"     LOC = "P54";
+// NET "LED_D4"     LOC = "P55";
+// NET "LED_D5"     LOC = "P56";
+// NET "LED_D6"     LOC = "P58";
+// NET "LED_D7"     LOC = "P59";
+// NET "LED_D8"     LOC = "P60";
 # Note: Definitions to be considered only for implementations that do NOT
 # MAKE USE of the parallel input port, but instead make use of the user
 # user defined LEDs D9-16.
@@ -70,15 +70,15 @@
 // NET "LED_D12"    LOC = "P93";
 // NET "LED_D13"    LOC = "P94";
 // NET "LED_D14"    LOC = "P95";
- NET "LED_D15"    LOC = "P96";
- NET "LED_D16"    LOC = "P97";
+// NET "LED_D15"    LOC = "P96";
+// NET "LED_D16"    LOC = "P97";
 
 ##### Connector J1 (Header A)
 // NET "J1_1"       LOC = "P4";    # Connected to the global GTS2 pin
 // NET "J1_2"       LOC = "P3";    # Connected to the global GTS1 pin
 // NET "J1_3"       LOC = "P23";   # Connected to the global GCK2 pin
 #  The "J1_4" pin makes available the onboard oscillator CLK signal
- NET "J1_5"       LOC = "P6";
+// NET "J1_5"       LOC = "P6";
 // NET "J1_6"       LOC = "P13";
 // NET "J1_7"       LOC = "P7";
 // NET "J1_8"       LOC = "P14";
@@ -119,16 +119,16 @@
 // NET "J3_3"       LOC = "P23";   # Connected to the global GCK2 pin
 #  The "J3_4" pin makes available the onboard oscillator CLK signal
 // NET "J3_5"       LOC = "P74";   # Connected to the same pin in J2 and J4
-// NET "J3_6"       LOC = "P61";
-// NET "J3_7"       LOC = "P41";
-// NET "J3_8"       LOC = "P65";
-// NET "J3_9"       LOC = "P42";
-// NET "J3_10"      LOC = "P66";
-// NET "J3_11"      LOC = "P43";
-// NET "J3_12"      LOC = "P67";
-// NET "J3_13"      LOC = "P46";
-// NET "J3_14"      LOC = "P68";
-// NET "J3_15"      LOC = "P49";
+ NET "J3_6"       LOC = "P61";
+ NET "J3_7"       LOC = "P41";
+ NET "J3_8"       LOC = "P65";
+ NET "J3_9"       LOC = "P42";
+ NET "J3_10"      LOC = "P66";
+ NET "J3_11"      LOC = "P43";
+ NET "J3_12"      LOC = "P67";
+ NET "J3_13"      LOC = "P46";
+ NET "J3_14"      LOC = "P68";
+ NET "J3_15"      LOC = "P49";
 // NET "J3_16"      LOC = "P70";
 // NET "J3_17"      LOC = "P50";
 // NET "J3_18"      LOC = "P71";
