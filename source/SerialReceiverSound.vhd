@@ -31,12 +31,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity SerialReceiverSound is
-	Port ( CLK   : in  STD_LOGIC;
+	Port ( CLK    : in  STD_LOGIC;
 	       SCLK   : in  STD_LOGIC;
 	       SDX    : in  STD_LOGIC;
           notSS  : in  STD_LOGIC;
 			 accept : in  STD_LOGIC;
-          D      : out STD_LOGIC_VECTOR (4 downto 0);
+          D      : out STD_LOGIC_VECTOR (3 downto 0);
           DXval  : out STD_LOGIC
 		  );
 end SerialReceiverSound;
@@ -67,7 +67,7 @@ component ShiftRegisterSound is
    Port ( SCLK        : in  STD_LOGIC;
 	       enableShift : in  STD_LOGIC;
 	       Data 		 : in  STD_LOGIC;
-			 D           : out STD_LOGIC_VECTOR (4 downto 0)
+			 D           : out STD_LOGIC_VECTOR (3 downto 0)
 		  );
 end component;
 
@@ -120,11 +120,10 @@ begin
 	port map ( SCLK=> SerialClock,
 	           enableShift => en,
 				  Data => DataChannel,
-				  D(0) => D(4),
-				  D(1) => D(3),
-				  D(2) => D(2),
-				  D(3) => D(1),
-				  D(4) => D(0)
+				  D(0) => D(3),
+				  D(1) => D(2),
+				  D(2) => D(1),
+				  D(3) => D(0)
 	         );
 				
 	U3: Contador4bit

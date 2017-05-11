@@ -34,7 +34,7 @@ entity ShiftRegisterSound is
    Port ( SCLK        : in  STD_LOGIC;
 	       enableShift : in  STD_LOGIC;
 	       Data 		 : in  STD_LOGIC;
-			 D           : out STD_LOGIC_VECTOR (4 downto 0)
+			 D           : out STD_LOGIC_VECTOR (3 downto 0)
 		  );
 end ShiftRegisterSound;
 
@@ -49,7 +49,7 @@ component register_D_E is
 		  );
 end component;
 
-	signal register_value :	STD_LOGIC_VECTOR (4 downto 0);
+	signal register_value :	STD_LOGIC_VECTOR (3 downto 0);
 
 begin
 
@@ -84,15 +84,6 @@ begin
 						  D(0) => Register_value(2),
 						  Q(0) => Register_value(3)
 						);						
-						
-	R4: Register_D_E
-			generic map (WIDTH => 1)
-			Port map ( CLK	 => SCLK,
-						  EN 	 => enableShift,
-						  D(0) => Register_value(3),
-						  Q(0) => Register_value(4)
-						);						
-						
 
 	D <= register_value;
 
