@@ -49,7 +49,7 @@ component register_D_E is
 		  );
 end component;
 
-	signal register_value :	STD_LOGIC_VECTOR (4 downto 0);
+	signal register_value :	STD_LOGIC_VECTOR (8 downto 0);
 
 begin
 
