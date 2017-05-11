@@ -78,22 +78,5 @@ begin
 					else '0';
 		done    <= '1' when current = STATE_Dval_On
 					else '0';
-		Dout(0) <= '1' when current = STATE_Dval_On and Din(0)='1'
-					else '0';
-		Dout(1) <= '1' when current = STATE_Dval_On and Din(1)='1'
-					else '0';
-		Dout(2) <= '1' when current = STATE_Dval_On and Din(2)='1'
-					else '0';
-		Dout(3) <= '1' when current = STATE_Dval_On and Din(3)='1'
-					else '0';
-		Dout(4) <= '1' when current = STATE_Dval_On and Din(4)='1'
-					else '0';
-		Dout(5) <= '1' when current = STATE_Dval_On and Din(5)='1'
-					else '0';
-		Dout(6) <= '1' when current = STATE_Dval_On and Din(6)='1'
-					else '0';
-		Dout(7) <= '1' when current = STATE_Dval_On and Din(7)='1'
-					else '0';
-		Dout(8) <= '1' when current = STATE_Dval_On and Din(8)='1'
-					else '0';
+		Dout   <= Din;
 end Behavioral;
