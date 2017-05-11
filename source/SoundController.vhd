@@ -75,10 +75,10 @@ begin
 		end case;
 		end process;
 		-- sinais de saida--
-		done    <= '1' when current = STATE_Dval_On
+		done   <= '1' when current = STATE_Dval_On
 					else '0';
 		
-		Play    <= '1' when current = STATE_Dval_On and Din(0)='1' and Din(1)='0'
+		Play   <= '1' when current = STATE_Dval_On and Din(0)='1' and Din(1)='0'
 					else '0';
 		sid(0) <= '1' when current = STATE_Dval_On and Din(0)='0' and Din(1)='1' and Din(2)='1'
 					else '0';
