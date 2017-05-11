@@ -30,15 +30,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ShiftRegister is
+entity ShiftRegisterSound is
    Port ( SCLK        : in  STD_LOGIC;
 	       enableShift : in  STD_LOGIC;
 	       Data 		 : in  STD_LOGIC;
-			 D           : out STD_LOGIC_VECTOR (8 downto 0)
+			 D           : out STD_LOGIC_VECTOR (4 downto 0)
 		  );
-end ShiftRegister;
+end ShiftRegisterSound;
 
-architecture Structural of ShiftRegister is
+architecture Structural of ShiftRegisterSound is
 
 component register_D_E is
 	generic (WIDTH : POSITIVE :=1);
@@ -92,37 +92,7 @@ begin
 						  D(0) => Register_value(3),
 						  Q(0) => Register_value(4)
 						);						
-	R5: Register_D_E
-			generic map (WIDTH => 1)
-			Port map ( CLK	 => SCLK,
-						  EN 	 => enableShift,
-                    D(0) => Register_value(4),
-						  Q(0) => Register_value(5)
-						);						
-	
-	R6: Register_D_E
-			generic map (WIDTH => 1)
-			Port map ( CLK	 => SCLK,
-						  EN 	 => enableShift,
-					D(0) => Register_value(5),
-						  Q(0) => Register_value(6)
-						);						
-	
-	R7: Register_D_E
-			generic map (WIDTH => 1)
-			Port map ( CLK	 => SCLK,
-						  EN 	 => enableShift,
-						  D(0) => Register_value(6),
-						  Q(0) => Register_value(7)
-						);						
 						
-	R8: Register_D_E
-			generic map (WIDTH => 1)
-			Port map ( CLK	 => SCLK,
-						  EN 	 => enableShift,
-						  D(0) => Register_value(7),
-						  Q(0) => Register_value(8)
-						);							
 
 	D <= register_value;
 

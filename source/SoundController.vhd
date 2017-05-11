@@ -30,18 +30,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity LCDDispatcher is
+entity SoundControler is
 	Port ( CLK  : in STD_LOGIC;
 			 Dval : in  STD_LOGIC;
-          Din  : in  STD_LOGIC_VECTOR (8 downto 0);
-			 Wrl	: out STD_LOGIC;
-          Dout : out STD_LOGIC_VECTOR (8 downto 0);
+          Din  : in  STD_LOGIC_VECTOR (3 downto 0);
+			 Play	: out STD_LOGIC;
+          sid  : out STD_LOGIC_VECTOR (1 downto 0);
+          vol  : out STD_LOGIC_VECTOR (1 downto 0);
           done : out STD_LOGIC
 		  );
-end LCDDispatcher;
+end SoundControler;
 
 
-architecture Behavioral of LCDDispatcher is
+architecture Behavioral of SoundControler is
 	type STATE_TYPE is (STATE_Dval_On, STATE_Dval_Off);
 	Signal Current, NS: STATE_TYPE;
 begin
@@ -74,9 +75,16 @@ begin
 		end case;
 		end process;
 		-- sinais de saida--
-		Wrl     <= '1' when current = STATE_Dval_On 
+		done    <= '1' when current = STATE_Dval_On 
+		
+		Play    <= '1' when current = STATE_Dval_On and Din(0)='1' and Din(1)='0'
 					else '0';
-		done    <= '1' when current = STATE_Dval_On
+		sid(0) <= '1' when current = STATE_Dval_On and Din(0)='0' and Din(1)='1' and Din(2)='1'
 					else '0';
--		Dout   <= Din;
+		sid(1) <= '1' when current = STATE_Dval_On and Din(0)='0' and Din(1)='1' and Din(3)='1'
+					else '0';
+		vol(0) <= '1' when current = STATE_Dval_On and Din(0)='1' and Din(1)='1' and Din(2)='1'
+					else '0';
+		vol(1) <= '1' when current = STATE_Dval_On and Din(0)='1' and Din(1)='1' and Din(3)='1'
+					else '0';
 end Behavioral;
