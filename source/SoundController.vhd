@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    11:00:22 05/06/2017 
+-- Create Date:    19:27:03 05/18/2017 
 -- Design Name: 
--- Module Name:    LCDDispatcher - Behavioral 
+-- Module Name:    SoundController - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -20,7 +20,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -30,62 +29,79 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity SoundControler is
-	Port ( CLK  : in STD_LOGIC;
+entity SoundController is
+    Port ( CLK : in STD_LOGIC;
+			  Dval : in  STD_LOGIC;
+           Din : in  STD_LOGIC_VECTOR (3 downto 0);
+           Play : out  STD_LOGIC;
+           sid : out  STD_LOGIC_VECTOR (1 downto 0);
+           vol : out  STD_LOGIC_VECTOR (1 downto 0);
+           done : out  STD_LOGIC);
+end SoundController;
+
+architecture Structural of SoundController is
+signal data : STD_LOGIC_VECTOR(1 downto 0);
+signal enable : STD_LOGIC_VECTOR(1 downto 0);
+signal PEN : STD_LOGIC;
+signal PCLR : STD_LOGIC;
+component SoundControl is
+	Port(	 CLK  : in STD_LOGIC;
 			 Dval : in  STD_LOGIC;
-          Din  : in  STD_LOGIC_VECTOR (3 downto 0);
+          Din  : in  STD_LOGIC_VECTOR(3 downto 0);
 			 Play	: out STD_LOGIC;
-          sid  : out STD_LOGIC_VECTOR (1 downto 0);
-          vol  : out STD_LOGIC_VECTOR (1 downto 0);
+			 Stop : out STD_LOGIC;
+			 ENsid  : out STD_LOGIC;
+          ENvol  : out STD_LOGIC;
+			 d		: out STD_LOGIC_VECTOR(1 downto 0);
           done : out STD_LOGIC
-		  );
-end SoundControler;
+			 );
+end component;
 
+component Register_2bit is
+	Port( 	CLK: in STD_LOGIC;
+			  D : in  STD_LOGIC_VECTOR (1 downto 0);
+           Q : out  STD_LOGIC_VECTOR (1 downto 0);
+           EN : in  STD_LOGIC
+			  );
+end component;
+component register_D_E_R is
+	generic ( WIDTH : POSITIVE :=1);
+   port ( CLK : in  STD_LOGIC;
+			 RST : in  STD_LOGIC;
+          EN  : in  STD_LOGIC;
+			 D   : in  STD_LOGIC_VECTOR (WIDTH-1 downto 0);
+          Q   : out STD_LOGIC_VECTOR (WIDTH-1 downto 0)
+			 );
+end component;
 
-architecture Behavioral of SoundControler is
-	type STATE_TYPE is (STATE_Dval_On, STATE_Dval_Off);
-	Signal Current, NS: STATE_TYPE;
 begin
-	State_transitions: process (CLK)
-	begin
-		if rising_edge(CLK) then
-			Current<= NS;
-		end if;
-	end process;
-	
-	Next_State_Eval : process (Current,Dval)
-	begin
-		case (Current) is
-		--
-		
-		when STATE_Dval_Off		=> 
-										if Dval = '0' then
-										NS <= STATE_Dval_Off;
-										else NS <= STATE_Dval_On;
-										end if;
 
-		when STATE_Dval_On		=> 
-										if Dval='1' then
-										NS <= STATE_Dval_On;
-										else NS <= STATE_Dval_Off;
-										end if;
+	SC: SoundControl
+		Port map(CLK => CLK,
+			 Dval => Dval,
+          Din => Din,
+			 Play	=> PEN,
+			 Stop => PCLR,
+			 ENsid => enable(0),
+			 ENvol => enable(1),
+			 d	=> data,
+          done => done);
+	Rsid: Register_2bit
+		Port map(CLK	=>	CLK,
+					EN		=> enable(0),
+					D		=> data,
+					Q	=> sid);
+	Rvol: Register_2bit
+		Port map(CLK	=>	CLK,
+					EN		=> enable(1),
+					D		=> data,
+					Q	=> vol);
+	Rplay: register_D_E_R
+		Port map(CLK => CLK,
+					RST => PCLR,
+					EN	 => PEN,
+					D(0)	 => '1',
+					Q(0)	 => Play		
+		);
+end Structural;
 
-
-		when others				=> NS <= STATE_Dval_Off;
-		end case;
-		end process;
-		-- sinais de saida--
-		done   <= '1' when current = STATE_Dval_On
-					else '0';
-		
-		Play   <= '1' when current = STATE_Dval_On and Din(0)='1' and Din(1)='0'
-					else '0';
-		sid(0) <= '1' when current = STATE_Dval_On and Din(0)='0' and Din(1)='1' and Din(2)='1'
-					else '0';
-		sid(1) <= '1' when current = STATE_Dval_On and Din(0)='0' and Din(1)='1' and Din(3)='1'
-					else '0';
-		vol(0) <= '1' when current = STATE_Dval_On and Din(0)='1' and Din(1)='1' and Din(2)='1'
-					else '0';
-		vol(1) <= '1' when current = STATE_Dval_On and Din(0)='1' and Din(1)='1' and Din(3)='1'
-					else '0';
-end Behavioral;

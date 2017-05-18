@@ -78,5 +78,5 @@ begin
 					else '0';
 		done    <= '1' when current = STATE_Dval_On
 					else '0';
--		Dout   <= Din;
+		Dout   <= Din;
 end Behavioral;

@@ -38,9 +38,9 @@ entity SoundControllerWrapper is
 			 J1_9: in STD_LOGIC;
 			 LED_D1: out STD_LOGIC;
 			 LED_D3: out STD_LOGIC;
-			 LED_D4: out STD_LOGIC;
+			 LED_D4 : out STD_LOGIC;
 			 LED_D6: out STD_LOGIC;
-			 LED_D7: out STD_LOGIC;
+			 LED_D7 : out STD_LOGIC;
 			 LED_D8: out STD_LOGIC
 			 );
 end SoundControllerWrapper;
@@ -48,28 +48,27 @@ end SoundControllerWrapper;
 architecture Structural of SoundControllerWrapper is
 
 component SoundController is
-	Port( CLK : in STD_LOGIC;
-			Dval : in STD_LOGIC;
-		   Din : in STD_LOGIC_VECTOR (3 downto 0);
-			Play : out STD_LOGIC;
-			sid : out STD_LOGIC_VECTOR (1 downto 0);
-			vol : out STD_LOGIC_VECTOR (1 downto 0);
-			done : out STD_LOGIC
-			);
+	Port ( CLK : in STD_LOGIC;
+			  Dval : in  STD_LOGIC;
+           Din : in  STD_LOGIC_VECTOR(3 downto 0);
+           Play : out  STD_LOGIC;
+           sid : out  STD_LOGIC_VECTOR(1 downto 0);
+           vol : out  STD_LOGIC_VECTOR(1 downto 0);
+           done : out  STD_LOGIC);
 end component;
 
 begin
 	SC0: SoundController
-		Port map(CLK		=> CLK,
-					Dval		=> J1_5,
-					Din(0) 	=> J1_6,
-					Din(1)	=> J1_7,
-					Din(2)	=> J1_8,
-					Din(3)	=> J1_9,
-					Play 		=> LED_D1,
+		Port map(CLK => CLK,
+					Dval => J1_5,
+					Din(0)  => J1_6,
+					Din(1)  => J1_7,
+					Din(2)  => J1_8,
+					Din(3)  => J1_9,
+					Play		=> LED_D1,
 					sid(0) 	=> LED_D3,
-					sid(1) 	=> LED_D4,
-					vol(0) 	=> LED_D6,
+					sid(1)	=> LED_D4,
+					vol(0)	=>	LED_D6,
 					vol(1)	=> LED_D7,
 					done		=> LED_D8
 		);
