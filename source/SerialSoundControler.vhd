@@ -29,7 +29,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity SerialSoundControler is
+entity SerialSoundController is
 	Port ( CLK    : in  STD_LOGIC;
 			 Ssel   : in  STD_LOGIC;
 	       SCLK   : in  STD_LOGIC;
@@ -39,7 +39,7 @@ entity SerialSoundControler is
           sid    : out STD_LOGIC_VECTOR (1 downto 0);
 			 vol    : out STD_LOGIC_VECTOR (1 downto 0)
 		  );
-end SerialSoundControler;
+end SerialSoundController;
 
 architecture Behavioral of SerialSoundControler is
 	signal sDval   : STD_LOGIC;
@@ -57,7 +57,7 @@ component SerialReceiverSound is
 		  );
 end component;
 
-component SoundControler is
+component SoundController is
 	Port ( CLK  : in STD_LOGIC;
 			 Dval : in  STD_LOGIC;
           Din  : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -80,7 +80,7 @@ Begin
               DXval  => sDval
 	         );
 
-	SC1 : SoundControler
+	SC1 : SoundController
 	port map ( CLK    => CLK,
 			     Dval 	=> sDval,
 			     Din  	=> sD,
