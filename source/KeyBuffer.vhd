@@ -30,7 +30,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity KeyBuffer is
-    Port ( DAV : in  STD_LOGIC;
+    Port ( CLK : in STD_LOGIC;
+			  DAV : in  STD_LOGIC;
            D : in  STD_LOGIC_VECTOR (3 downto 0);
            ACK : in  STD_LOGIC;
            Dval : out  STD_LOGIC;
@@ -50,7 +51,8 @@ component register_D_E_R is
 			 );
 end component;
 component KeyBufferControl is
-Port ( DAV : in  STD_LOGIC;
+Port ( 	  CLK : in STD_LOGIC;
+			  DAV : in  STD_LOGIC;
            ACK : in  STD_LOGIC;
            Wreg : out  STD_LOGIC;
            DAC : out  STD_LOGIC;
@@ -67,10 +69,11 @@ begin
 					Q		=> Q  	
 		);
 	U1: KeyBufferControl
-		Port map(DAV=>DAV,
-           ACK => ACK,
-           Wreg =>swreg,
-           DAC => DAC,
-           Dval=> Dval);
+		Port map(CLK=>CLK,
+					DAV=>DAV,
+					ACK => ACK,
+					Wreg =>swreg,
+					DAC => DAC,
+					Dval=> Dval);
 end Structural;
 

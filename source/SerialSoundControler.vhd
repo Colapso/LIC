@@ -41,7 +41,7 @@ entity SerialSoundController is
 		  );
 end SerialSoundController;
 
-architecture Behavioral of SerialSoundControler is
+architecture Behavioral of SerialSoundController is
 	signal sDval   : STD_LOGIC;
 	signal saccept : STD_LOGIC;
 	signal sD 	   : STD_LOGIC_VECTOR (3 downto 0);

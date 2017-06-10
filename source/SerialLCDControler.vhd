@@ -30,7 +30,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity SerialLCDControler is
+entity SerialLCDController is
 	Port ( CLK    : in  STD_LOGIC;
 			 LCDsel : in  STD_LOGIC;
 	       SCLK   : in  STD_LOGIC;
@@ -40,9 +40,9 @@ entity SerialLCDControler is
 			 RS     : out STD_LOGIC;
           D      : out STD_LOGIC_VECTOR (7 downto 0)
 		  );
-end SerialLCDControler;
+end SerialLCDController;
 
-architecture Behavioral of SerialLCDControler is
+architecture Behavioral of SerialLCDController is
 	signal sDval   : STD_LOGIC;
 	signal saccept : STD_LOGIC;
 	signal sD 	   : STD_LOGIC_VECTOR (8 downto 0);
